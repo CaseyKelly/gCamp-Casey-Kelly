@@ -3,13 +3,14 @@
 <hr>
 
 <% @questions.each do |question| %>
-  <ul><li><%=question[0] %></li></ul>
+  <ul><li><%=question %></li></ul>
 <% end %>
 
 <% @questions.each do |question| %>
-  <p><b><%=question[0] %></p></b>
+  <p><b><%= question %></p></b>
 
   <% @answers.each do |answer| %>
-    <p><%=answer[0] %><p>
+    <p><%= answer %><p>
   <% end %>
+
 <% end %>
