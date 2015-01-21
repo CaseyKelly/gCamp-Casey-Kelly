@@ -20,16 +20,19 @@
 
   <%= yield %>
 
-  <hr>
-
   <footer>
     <div class="row">
       <div class= "col-md-6">
-        <a href="/about">About</a>
+        <%= link_to "About", about_path %>
+        |
+        <%= link_to "Terms", terms_path %>
+        |
+        <%= link_to "FAQ", faq_path %>
+        <!-- <a href="/about">About</a>
         |
         <a href="/terms">Terms</a>
         |
-        <a href="/faq">FAQ</a>
+        <a href="/faq">FAQ</a> -->
         <!-- |
         <a href="/tasks">Tasks</a>
       </div> -->

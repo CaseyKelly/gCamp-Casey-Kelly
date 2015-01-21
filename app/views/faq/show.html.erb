@@ -1,0 +1,15 @@
+<h1>Frequently Asked Questions</h1>
+
+<hr>
+
+<% @questions.each do |question| %>
+  <ul><li><%=question[0] %></li></ul>
+<% end %>
+
+<% @questions.each do |question| %>
+  <p><b><%=question[0] %></p></b>
+
+  <% @answers.each do |answer| %>
+    <p><%=answer[0] %><p>
+  <% end %>
+<% end %>
