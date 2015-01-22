@@ -1,16 +1,19 @@
-<h1>Frequently Asked Questions</h1>
+<div class="page-header">
+  <id="top"><h1>Frequently Asked Questions</h1>
+</div>
 
-<hr>
+<ul>
+  <li><%= link_to @first_question.question, "#first-question" %></li>
+  <li><%= link_to @second_question.question, "#second-question" %></li>
+  <li><%= link_to @third_question.question, "#third-question" %></li>
+</ul>
 
-<% @questions.each do |question| %>
-  <ul><li><%=question %></li></ul>
-<% end %>
-
-<% @questions.each do |question| %>
-  <p><b><%= question %></p></b>
-
-  <% @answers.each do |answer| %>
-    <p><%= answer %><p>
-  <% end %>
-
-<% end %>
+<div class="row">
+  <div class="col-md-6">
+    <% @questions.each do |x| %>
+      <p id="<%= x.slug %>"><b><%= x.question %></b></p>
+      <p><%= x.answer %></p>
+      <p><u><%= link_to "top", "#top" %></u></p>
+    <% end %>
+  </div>
+</div>
