@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :tasks
+
   get 'about/show'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
   get 'about' => 'about#show'
   get 'terms' => 'terms#show'
   get 'faq' => 'faq#show'
+  get 'tasks' => 'tasks#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
