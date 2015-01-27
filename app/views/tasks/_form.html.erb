@@ -32,11 +32,13 @@
     </div>
   </div>
 
+<% if @task.description != nil %>
   <div class="form-group">
     <div class="col-md-offset-2 col-md-4">
       <%= f.check_box(:complete) %> <b>Complete</b>
     </div>
   </div>
+<% end %>
 
   <div class="form-group">
     <div class="col-md-offset-2 col-md-4">
