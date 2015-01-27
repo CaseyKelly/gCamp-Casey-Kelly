@@ -18,6 +18,14 @@
 
   <div class="container">
 
+  <% flash.each do |type, message| %>
+    <% if type == "notice" %>
+      <div class="alert alert-success"><b><center><%= message %></b></center></div>
+    <% elsif type == "alert" %>
+      <div class="alert alert-danger"><b><center><%= message %></b></center></div>
+    <% end %>
+  <% end %>
+
   <%= yield %>
 
   <footer>
