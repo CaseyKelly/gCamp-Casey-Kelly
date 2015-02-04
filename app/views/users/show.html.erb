@@ -1,7 +1,15 @@
 <div class="page-header">
+  <div class="pull-right">
+    <%= link_to 'Edit', edit_user_path, :class => "btn btn-info" %>
+  </div>
   <h1><%= @user.full_name %></h1>
 </div>
 
-<p><b>First Name:</b> <%= @user.first_name %></p>
-<p><b>Last Name:</b> <%= @user.last_name %></p>
-<p><b>Email:</b> <%= @user.email %></p>
+<dl class="dl-horizontal">
+  <p><b><dt>First name</dt></b>
+    <dd><%= @user.first_name %></dd></p>
+  <p><b><dt>Last name</dt></b>
+    <dd><%= @user.last_name %></dd></p>
+  <p><b><dt>Email</dt></b>
+    <dd><%= @user.email %></dd></p>
+</dl>
