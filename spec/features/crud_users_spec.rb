@@ -12,7 +12,7 @@ describe 'Users can CRUD users' do
     click_on 'New User'
     expect(page).to have_content 'First name'
     click_button "Create User"
-    expect(page).to have_content 'errors prohibited this from being saved'
+    expect(page).to have_content 'errors prohibited this user from being saved'
     fill_in "First name", with: 'Casey'
     fill_in "Last name", with: 'Kelly'
     fill_in "Email", with: 'casey@kelly.com'
