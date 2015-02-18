@@ -28,7 +28,9 @@ describe 'Users can CRUD users' do
   end
 
   it 'user can delete a user' do
-
+    visit "/users"
+    click_on 'Delete'
+    expect(page).to have_content 'User was successfully deleted.'
   end
 
 end
