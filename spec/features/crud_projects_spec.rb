@@ -12,7 +12,7 @@ describe 'Users can CRUD projects' do
     click_on 'Create Project'
     expect(page).to have_content 'Name'
     click_button "Create Project"
-    expect(page).to have_content 'error prohibited this from being saved'
+    expect(page).to have_content 'error prohibited this project from being saved'
     fill_in "Name", with: 'Big project'
     click_button "Create Project"
     expect(page).to have_content 'Project was successfully created.'
