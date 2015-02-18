@@ -19,7 +19,10 @@ describe 'Users can CRUD projects' do
   end
 
   it 'user can edit a project' do
-
+    visit "/projects"
+    click_on 'Edit'
+    click_on 'Update Project'
+    expect(page).to have_content 'Project was successfully updated.'
   end
 
   it 'user can delete a project' do
