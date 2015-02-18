@@ -8,7 +8,11 @@ describe 'Users can CRUD tasks' do
   end
 
   it "user can create task" do
-
+    click_on 'New Task'
+    expect(page).to have_content 'Description'
+    fill_in "Description", with: 'Pass the test'
+    click_button "Create Task"
+    expect(page).to have_content 'Task was successfully created.'
   end
 
 
