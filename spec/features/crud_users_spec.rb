@@ -21,7 +21,10 @@ describe 'Users can CRUD users' do
   end
 
   it 'user can edit a user' do
-
+    visit "/users"
+    click_on 'Edit'
+    click_on 'Update User'
+    expect(page).to have_content 'User was successfully updated.'
   end
 
   it 'user can delete a user' do
