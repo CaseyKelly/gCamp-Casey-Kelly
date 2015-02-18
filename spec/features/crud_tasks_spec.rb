@@ -23,6 +23,11 @@ describe 'Users can CRUD tasks' do
     expect(page).to have_content 'Task was successfully updated.'
   end
 
+  it 'user can delete a task' do
+    visit "/tasks"
+    click_on 'Delete'
+    expect(page).to have_content 'Task was successfully destroyed.'
+  end
 
 end
 
