@@ -19,7 +19,7 @@
           <%= link_to current_user.full_name, user_path(current_user), class: 'navbar-brand' %>
           <%= link_to 'Sign Out', logout_path, class: 'navbar-brand' %>
         <% else %>
-          <%= link_to 'Sign Up', login_path, class: 'navbar-brand' %>
+          <%= link_to 'Sign Up', new_registration_path, class: 'navbar-brand' %>
           <%= link_to 'Sign In', login_path, class: 'navbar-brand' %>
         <% end %>
       </div>
