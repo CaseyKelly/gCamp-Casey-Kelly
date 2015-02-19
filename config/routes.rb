@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   resources :tasks, :users, :projects
   resources :registrations, only: [:new]
 
-  get '/login' => 'sessions#new'
+  get '/login' => 'sessions#new', as: :login
   post '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
+  get '/logout' => 'sessions#destroy', as: :logout
+  get '/signup' => 'registrations#new', as: :signup
+  post '/signup' => 'registrations#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

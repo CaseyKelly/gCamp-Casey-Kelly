@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  # before_action :authenticate, except: [:create]
 
   def new
     @user = User.new
@@ -8,9 +9,9 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_path, notice: 'Welcome back, stranger!'
+      redirect_to users_path, notice: 'Welcome back, stranger!'
     else
-      redirect_to login_path, alert: "Username / password combination is invalid"
+      redirect_to signup_path, alert: "Username / password combination is invalid"
     end
   end
 
