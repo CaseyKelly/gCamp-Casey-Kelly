@@ -3,13 +3,9 @@
     <div class="well">
       <h2>Sign Into gCamp</h2>
       <%= form_tag login_path do |f| %>
-      <% if @user.errors.any? %>
+      <% if flash[:login_alert] %>
       <div class="alert alert-danger">
-        <ul class="list-unstyled">
-          <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-          <% end %>
-        </ul>
+        <%= flash[:login_alert] %>
       </div>
       <% end %>
       <div class="form-group">

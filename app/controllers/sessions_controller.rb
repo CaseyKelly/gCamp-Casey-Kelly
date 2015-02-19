@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to users_path, notice: 'Welcome back, stranger!'
     else
-      redirect_to signup_path, alert: "Username / password combination is invalid"
+      flash[:login_alert] = "Username / password combination is invalid"
+      redirect_to login_path
     end
   end
 
