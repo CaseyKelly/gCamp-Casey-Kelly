@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  # before_action :authenticate, except: [:create]
 
   def new
     @user = User.new
