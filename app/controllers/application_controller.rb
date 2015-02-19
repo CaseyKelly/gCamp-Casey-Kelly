@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
-  def authorize
-    redirect_to login_url, notice: "Not authorized!" if current_user.nil?
+  def authenticate
+    redirect_to login_path, :alert => 'You must be logged in to visit that page.' unless current_user
   end
 end
