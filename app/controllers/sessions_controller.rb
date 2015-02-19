@@ -3,17 +3,17 @@ class SessionsController < ApplicationController
     @user = User.new
   end
   def create
-    @user = User.find_by(email: params[:email])
-    if @user && @user.authenticate(params[:password])
+    @user = User.find_by(email: params[:user][:email])
+    if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to root_path, notice: 'Welcome back, stranger!'
     else
-      flash[:alert] = "Denied bitch!"
-      render :new
+      @user.errors[:base] << "Invalid email / password"
+      render :login
     end
   end
   def destroy
-    session[:user_id] = nil
-    redirect_to '/login'
+    session.clear
+    redirect_to root_path, notice: "We're sorry to see you go!"
   end
 end

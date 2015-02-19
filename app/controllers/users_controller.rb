@@ -20,10 +20,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-        redirect_to users_path, notice: 'User was successfully created.'
-      else
-        render :new
-      end
+      session[:user_id] = @user.id
+      redirect_to root_url, notice: "Thanks for signing up, dude!"
+    else
+      render "new"
+    end
   end
 
   def update
