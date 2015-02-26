@@ -4,9 +4,9 @@ describe 'Users can CRUD tasks' do
 
   before :each do
     visit '/signup'
-    fill_in "First name", with: 'Test'
-    fill_in "Last name", with: 'User'
-    fill_in "Email", with: 'test@user.com'
+    fill_in "First name", with: 'Charlie'
+    fill_in "Last name", with: 'Bucket'
+    fill_in "Email", with: 'charlie@user.com'
     fill_in "Password", with: 'password'
     fill_in "Password confirmation", with: 'password'
     click_on 'Login!'
