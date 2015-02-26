@@ -1,5 +1,7 @@
 gCamp project
 
+[![Build Status](https://travis-ci.org/CaseyKelly/gCamp-Casey-Kelly.svg)](https://travis-ci.org/CaseyKelly/gCamp-Casey-Kelly)
+
 == README
 
 * Ruby version
@@ -17,5 +19,3 @@ gCamp project
   -Twitter: https://twitter.com/caseyk819
   -GitHub: https://github.com/CaseyKelly
   -gSchool bio: https://students.gschool.it/students/195
-
-[![Build Status](https://travis-ci.org/CaseyKelly/gCamp-Casey-Kelly.svg)](https://travis-ci.org/CaseyKelly/gCamp-Casey-Kelly)
