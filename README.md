@@ -1,8 +1,8 @@
-gCamp project
+<h1>gCamp project</h1>
 
 [![Build Status](https://travis-ci.org/CaseyKelly/gCamp-Casey-Kelly.svg)](https://travis-ci.org/CaseyKelly/gCamp-Casey-Kelly)
 
-== README
+<h3>README</h3>
 
 * Ruby version
   2.2.0
