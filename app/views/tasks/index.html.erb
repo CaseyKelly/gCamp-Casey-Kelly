@@ -1,5 +1,5 @@
 <div class="page-header">
-  <!--  link_to 'New Task', new_task_path, :class => "btn btn-info pull-right" -->
+  <%= link_to 'New Task', new_project_task_path(@project), :class => "btn btn-info pull-right" %>
   <h1>Tasks for <%= @project.name %></h1>
 </div>
 
