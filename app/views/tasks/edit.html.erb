@@ -3,9 +3,10 @@
 </div>
 
 <ol class="breadcrumb">
-  <li><%= link_to 'Tasks', tasks_path %></li>
-  <li><%= link_to @task.description, @task %></li>
-  <li class="active">Edit Task</li>
+  <li><a href="/projects">Projects</a></li>
+  <li><%= link_to @project.name, project_path(@project) %></li>
+  <li><%= link_to "#{@project.name}'s Tasks", project_tasks_path(@project) %></li>
+  <li class="active">Edit Task for <%= @project.name %></li>
 </ol>
 
 <%= render 'form' %>
