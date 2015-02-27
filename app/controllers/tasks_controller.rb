@@ -21,24 +21,27 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.project_id = params[:project_id]
       if @task.save
-        redirect_to @task, notice: 'Task was successfully created.'
+        redirect_to project_tasks_path(@project), notice: 'Task was successfully created.'
       else
         render :new
       end
   end
 
   def update
+    @task.project_id = params[:project_id]
       if @task.update(task_params)
-        redirect_to @task, notice: 'Task was successfully updated.'
+        redirect_to @project.tasks, notice: 'Task was successfully updated.'
       else
         render :edit
       end
   end
 
   def destroy
+    @task.project_id = params[:project_id]
     @task.destroy
-      redirect_to tasks_url, notice: 'Task was successfully destroyed.'
+      redirect_to project_tasks_url, notice: 'Task was successfully destroyed.'
   end
 
   private
