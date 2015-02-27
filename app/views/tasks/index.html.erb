@@ -20,13 +20,18 @@
 
   <tbody>
     <% @project.tasks.each do |task| %>
-    <tr>
-      <td><%= task.description %></td>
-      <td><%= task.complete %></td>
-      <td><%= task.date %></td>
-      <td><div class="text-right"><%= link_to 'Edit', edit_project_task_path(@project, task), :class => "btn btn-info" %>
-        <%= link_to 'Delete', project_task_path(@project, task), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></div></td>
+      <tr>
+        <td><%= task.description %></td>
+        <td><%= task.complete %></td>
+        <td><%= task.date %></td>
+        <td>
+          <div class="text-right">
+            <%= link_to 'Show', project_task_path(@project, task), :class => "btn btn-success" %>
+            <%= link_to 'Edit', edit_project_task_path(@project, task), :class => "btn btn-info" %>
+            <%= link_to 'Delete', project_task_path(@project, task), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+          </div>
+        </td>
       </tr>
-      <% end %>
-    </tbody>
-  </table>
+    <% end %>
+  </tbody>
+</table>
