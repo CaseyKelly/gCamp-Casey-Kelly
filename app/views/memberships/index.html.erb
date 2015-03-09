@@ -17,5 +17,5 @@
 </div>
 
 <% @memberships.each do |membership| %>
-<%= membership.role %>
+<p><%= membership.user.full_name %>
 <% end %>
