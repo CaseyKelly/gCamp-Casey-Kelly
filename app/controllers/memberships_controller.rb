@@ -10,5 +10,20 @@ class MembershipsController < ApplicationController
   end
 
   def create
-  end
+    @project = Project.find(params[:project_id])
+    @membership = Membership.new(membership_params)
+    @membership.project_id = @project.id
+    @membership.user_id
+      if @membership.save
+        redirect_to project_memberships_path(@project), notice: 'Membership was successfully created.'
+      else
+        render :new
+     end
+   end
+
+   private
+
+   def membership_params
+     params.require(:membership).permit(:user_id, :role)
+   end
 end

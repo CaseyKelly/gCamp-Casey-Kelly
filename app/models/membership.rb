@@ -4,7 +4,7 @@ class Membership < ActiveRecord::Base
   enum role: {member: 0, owner: 1}
 
   def self.capital_roles
-    roles.map{|name, value| [name.capitalize, value]}
+    roles.map{|name, value| [name.capitalize, name]}
   end
 
 end
