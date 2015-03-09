@@ -11,8 +11,5 @@
   <li class="active"><%= @project.name %></li>
 </ol>
 
-<dl class="dl-horizontal">
-  <p><dt>Project Name</dt>
-    <dd><%= @project.name %></dd></p>
-    <p><dd><%= link_to "#{@project.tasks.length} Tasks", project_tasks_path(@project) %></dd>
-</dl>
+<p><%= link_to "#{@project.tasks.length} Tasks", project_tasks_path(@project) %>
+<p><%= link_to "#{@project.memberships.length} Memberships", project_memberships_path(@project) %>
