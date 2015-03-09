@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20150309195202) do
   create_table "memberships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "project_id"
-    t.boolean "owner"
+    t.integer "role"
   end
 
   add_index "memberships", ["project_id"], name: "index_memberships_on_project_id", using: :btree

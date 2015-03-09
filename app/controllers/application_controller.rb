@@ -7,6 +7,16 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  def ownership
+    if @user.owner == true
+      "Owner"
+    else
+      "Member"
+    end
+  end
+
+  helper_method :ownership
+
   def authenticate
     redirect_to login_path, :alert => 'You must be logged in to visit that page.' unless current_user
   end

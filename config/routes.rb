@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :users
   resources :projects do
     resources :tasks
+    resources :memberships
   end
+
   resources :registrations, only: [:new]
 
   get '/login' => 'sessions#new', as: :login
