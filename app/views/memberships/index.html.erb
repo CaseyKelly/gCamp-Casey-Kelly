@@ -21,4 +21,5 @@
 
 <% @project.memberships.each do |membership| %>
 <p><%= link_to membership.user.full_name, user_path(membership.user) %>
+<%= link_to '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'.html_safe, project_membership_path(@project, membership), method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
