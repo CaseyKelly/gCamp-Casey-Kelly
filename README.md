@@ -16,7 +16,7 @@
 * Heroku URL: https://limitless-shore-2097.herokuapp.com/
 
 * Created by Casey Kelly
-  -LinkedIn: https://www.linkedin.com/in/caseyjkelly
-  -Twitter: https://twitter.com/caseyk819
-  -GitHub: https://github.com/CaseyKelly
-  -gSchool bio: https://students.gschool.it/students/195
+  <p>-LinkedIn: https://www.linkedin.com/in/caseyjkelly
+  <p>-Twitter: https://twitter.com/caseyk819
+  <p>-GitHub: https://github.com/CaseyKelly
+  <p>-gSchool bio: https://students.gschool.it/students/195
