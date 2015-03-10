@@ -1,4 +1,4 @@
-<h1>gCamp project</h1>
+<h1>gCamp</h1>
 
 [![Build Status](https://travis-ci.org/CaseyKelly/gCamp-Casey-Kelly.svg)](https://travis-ci.org/CaseyKelly/gCamp-Casey-Kelly)
 
