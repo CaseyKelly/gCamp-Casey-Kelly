@@ -36,4 +36,10 @@ describe 'Users can CRUD projects' do
     expect(page).to have_content 'Project was successfully deleted.'
   end
 
+  it 'user can not create an invalid project' do
+    click_on 'Create Project'
+    click_on 'Create Project'
+    expect(page).to have_content "Name can't be blank"
+  end
+
 end
