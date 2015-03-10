@@ -8,10 +8,11 @@
   2.2.0
 
 * To install:
+'''
   -bundle
   -rake db:create db:migrate db:seed
   -rails s
-
+'''
 * Heroku URL: https://limitless-shore-2097.herokuapp.com/
 
 * Created by Casey Kelly
