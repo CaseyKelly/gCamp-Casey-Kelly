@@ -47,4 +47,10 @@ describe 'Users can CRUD tasks' do
     expect(page).to have_content 'Task was successfully destroyed.'
   end
 
+  it 'user can not create an invalid task' do
+    click_on 'New Task'
+    click_button "Create Task"
+    expect(page).to have_content "Description can't be blank"
+  end
+
 end
