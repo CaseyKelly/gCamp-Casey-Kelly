@@ -19,6 +19,7 @@ end
 group :development, :test do
   gem 'database_cleaner', '~> 1.4.0'
   gem 'factory_girl_rails'
+  gem 'better_errors'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'pry-byebug'
