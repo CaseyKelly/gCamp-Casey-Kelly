@@ -7,17 +7,17 @@ class Project < ActiveRecord::Base
 
   def num_memberships
     if self.memberships.length == 1
-      "#{self.memberships.length} membership"
+      "#{self.memberships.length} Membership"
     else
-      "#{self.memberships.length} memberships"
+      "#{self.memberships.length} Memberships"
     end
   end
 
   def num_tasks
     if self.tasks.length == 1
-      "#{self.tasks.length} task"
+      "#{self.tasks.length} Task"
     else
-      "#{self.tasks.length} tasks"
+      "#{self.tasks.length} Tasks"
     end
   end
 end
