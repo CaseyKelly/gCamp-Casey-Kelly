@@ -14,6 +14,24 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="/">gCamp</a>
       </div>
+      <% if params['controller'] == 'projects' || params['controller'] == 'tasks' || params['controller'] == 'memberships' || params['controller'] == 'users' %>
+        <div class="navbar-header">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      <% end %>
       <div class="navbar-header pull-right">
         <% if current_user %>
           <%= link_to current_user.full_name, user_path(current_user), class: 'navbar-brand' %>
