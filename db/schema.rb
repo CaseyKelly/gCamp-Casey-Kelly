@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401032532) do
+ActiveRecord::Schema.define(version: 20150407023429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text    "message"
+    t.integer "user_id"
+    t.integer "task_id"
+  end
+
+  add_index "comments", ["task_id"], name: "index_comments_on_task_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "faqs", force: :cascade do |t|
     t.string "question"
@@ -57,6 +66,8 @@ ActiveRecord::Schema.define(version: 20150401032532) do
     t.string   "password_digest"
   end
 
+  add_foreign_key "comments", "tasks"
+  add_foreign_key "comments", "users"
   add_foreign_key "memberships", "projects"
   add_foreign_key "memberships", "users"
   add_foreign_key "tasks", "projects"
