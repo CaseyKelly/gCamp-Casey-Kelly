@@ -43,7 +43,7 @@ describe 'Users can CRUD tasks' do
     click_button "Create Task"
     expect(page).to have_content 'Task was successfully created.'
     expect(page).to have_content 'Pass the test'
-    click_on 'Delete'
+    find('.delete-button').click
     expect(page).to have_content 'Task was successfully destroyed.'
   end
 
