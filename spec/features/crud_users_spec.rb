@@ -89,6 +89,7 @@ describe 'Users can CRUD users' do
     fill_in "Password confirmation", with: 'password'
     click_button "Login!"
     expect(page).to have_content 'Thanks for signing up, dude!'
+    visit '/users'
     click_on 'New User'
     fill_in "First name", with: 'Casey'
     fill_in "Last name", with: 'Kelly'
