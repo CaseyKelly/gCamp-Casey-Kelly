@@ -9,7 +9,7 @@ class RegistrationsController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to users_path, notice: "Thanks for signing up, dude!"
+      redirect_to new_project_path, notice: "Thanks for signing up, dude!"
     else
       render :new
     end
