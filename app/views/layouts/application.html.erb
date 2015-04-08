@@ -21,8 +21,8 @@
               <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown" role="button" aria-expanded="false">Projects<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li>
-                  <% navbar_projects.each do |project| %>
-                    <%= @project %>
+                  <% current_user.projects.each do |project| %>
+                    <%= link_to project.name, project_path(project) %>
                   <% end %>
                 </li>
                 <li class="divider"></li>
