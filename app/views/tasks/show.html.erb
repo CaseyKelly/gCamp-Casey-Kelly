@@ -19,7 +19,11 @@
 <% @comments.each do |comment| %>
 <div class="row">
   <div class="col-md-3">
-    <p><%= link_to comment.user.full_name, user_path(comment.user_id) %></p>
+    <% if comment.user.present? %>
+      <p><%= link_to comment.user.full_name, user_path(comment.user_id) %></p>
+    <% else %>
+      <p class="text-muted">Deleted User</p>
+    <% end %>
     <p class="text-muted"><%= time_ago_in_words(comment.created_at) %> ago</p>
   </div>
 
