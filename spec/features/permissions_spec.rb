@@ -15,4 +15,15 @@ describe 'different users have different permissions' do
     expect(page).to have_content 'Create Project'
   end
 
+  it 'new users are taken to new project page after signing up' do
+    visit '/signup'
+    fill_in "First name", with: 'New'
+    fill_in "Last name", with: 'User'
+    fill_in "Email", with: 'new@user.com'
+    fill_in "Password", with: 'password'
+    fill_in "Password confirmation", with: 'password'
+    click_on 'Login!'
+    expect(page).to have_content 'New Project'
+  end
+
 end
