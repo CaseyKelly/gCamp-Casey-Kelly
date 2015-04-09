@@ -26,4 +26,14 @@ describe 'different users have different permissions' do
     expect(page).to have_content 'New Project'
   end
 
+  it 'user is added as owner of events it creates' do
+    visit '/projects/new'
+    fill_in('Name', with: 'Another Dope Project')
+    click_button 'Create Project'
+    expect(page).to have_content 'Project was successfully created.'
+    first(:link, 'Another Dope Project').click
+    click_link 'Membership'
+    expect(page).to have_css '.edit_membership'
+  end
+
 end
