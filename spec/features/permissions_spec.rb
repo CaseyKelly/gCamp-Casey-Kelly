@@ -36,4 +36,12 @@ describe 'different users have different permissions' do
     expect(page).to have_css '.edit_membership'
   end
 
+  it 'user creates project and is taken to project tasks page' do
+    visit '/projects/new'
+    fill_in('Name', with: 'A Sweet Project')
+    click_button 'Create Project'
+    expect(page).to have_content 'Project was successfully created.'
+    expect(page).to have_content 'Tasks for A Sweet Project'
+  end
+
 end
