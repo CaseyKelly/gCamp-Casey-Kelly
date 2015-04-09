@@ -21,8 +21,13 @@ describe 'Different users see different layouts' do
     expect(page).to have_content 'Create Project'
   end
 
-  it 'dropdown only shows projects the current user belongs to' do
-
+  it 'dropdown shows projects the current user belongs to' do
+    visit 'projects/new'
+    fill_in('Name', with: 'Dope Project')
+    click_button 'Create Project'
+    expect(page).to have_content 'Project was successfully created.'
+    click_on 'projects-dropdown'
+    expect(page).to have_css '.dropdown-menu li a'
   end
 
 end
