@@ -10,9 +10,10 @@ describe 'Users can CRUD projects' do
     fill_in "Password", with: 'password'
     fill_in "Password confirmation", with: 'password'
     click_on 'Login!'
-    @project = Project.create(name: 'Test project')
+    fill_in 'Name', with: 'User CRUD project'
+    click_button 'Create Project'
     visit '/projects'
-    expect(page).to have_content 'Test project'
+    expect(page).to have_content 'User CRUD project'
   end
 
   it "user can create a project" do
