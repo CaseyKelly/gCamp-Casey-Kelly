@@ -50,4 +50,10 @@ describe 'different users have different permissions' do
     expect(page).not_to have_content 'Not my project'
   end
 
+  it 'user restricted from views of projects it doesnt belong to' do
+    @project = Project.create(name: 'Not my project')
+    visit project_path(@project)
+    expect(page).to have_content 'You do not have access to that project.'
+  end
+
 end
