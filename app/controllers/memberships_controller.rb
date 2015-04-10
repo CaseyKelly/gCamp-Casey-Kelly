@@ -40,6 +40,7 @@ class MembershipsController < ApplicationController
    private
 
    def check_membership
+     @project = Project.find(params[:project_id])
      redirect_to projects_path, :alert => 'You do not have access to that project.' unless @project.users.include? current_user
    end
 
