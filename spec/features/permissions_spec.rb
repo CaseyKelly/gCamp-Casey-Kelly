@@ -44,4 +44,10 @@ describe 'different users have different permissions' do
     expect(page).to have_content 'Tasks for A Sweet Project'
   end
 
+  it 'user can only see projects it has created on project index' do
+    @project = Project.create(name: 'Not my project')
+    visit '/projects'
+    expect(page).not_to have_content 'Not my project'
+  end
+
 end
