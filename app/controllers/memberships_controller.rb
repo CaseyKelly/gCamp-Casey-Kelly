@@ -1,4 +1,6 @@
 class MembershipsController < ApplicationController
+  before_action :check_membership
+
   def new
     @membership = Membership.new
   end
@@ -36,6 +38,10 @@ class MembershipsController < ApplicationController
    end
 
    private
+
+   def check_membership
+     redirect_to projects_path, :alert => 'You do not have access to that project.' unless @project.users.include? current_user
+   end
 
    def membership_params
      params.require(:membership).permit(:user_id, :role)
