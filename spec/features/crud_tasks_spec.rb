@@ -10,9 +10,10 @@ describe 'Users can CRUD tasks' do
     fill_in "Password", with: 'password'
     fill_in "Password confirmation", with: 'password'
     click_on 'Login!'
-    @project = Project.create(name: 'Test project')
+    visit '/projects/new'
+    fill_in 'Name', with: 'User CRUD task project'
+    click_button 'Create Project'
     @task = Task.create(description: 'Task hard bro', due_date: '08-19-2015', complete: false)
-    visit project_tasks_path(@project)
   end
 
   it "user can create task" do
