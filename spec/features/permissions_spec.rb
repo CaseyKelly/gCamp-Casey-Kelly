@@ -68,4 +68,23 @@ describe 'different users have different permissions' do
     expect(page).to have_content 'You do not have access to that project.'
   end
 
+  it 'only project owners can see edit button and delete well' do
+    visit '/projects/new'
+    fill_in 'Name', with: 'edit and delete permissions'
+    click_button 'Create Project'
+    visit '/projects'
+    first(:link, 'edit and delete permissions').click
+    expect(page).to have_css '.well'
+    expect(page).to have_css '.btn-info'
+    click_on 'Membership'
+    within(:html, "p") do
+      select('Member', :from => 'membership[role]')
+      click_button 'Update'
+    end
+    expect(page).to have_content 'was successfully updated.'
+    first(:link, 'edit and delete permissions').click
+    expect(page).not_to have_css '.well'
+    expect(page).not_to have_css '.btn-info'
+  end
+
 end
