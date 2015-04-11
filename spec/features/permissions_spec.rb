@@ -87,4 +87,20 @@ describe 'different users have different permissions' do
     expect(page).not_to have_css '.btn-info'
   end
 
+  it 'members who are not owners do not see form for adding new members' do
+    visit '/projects/new'
+    fill_in 'Name', with: 'edit and delete permissions'
+    click_button 'Create Project'
+    visit '/projects'
+    first(:link, 'edit and delete permissions').click
+    click_on 'Membership'
+    expect(page).to have_css '.new_membership'
+    within(:html, "p") do
+      select('Member', :from => 'membership[role]')
+      click_button 'Update'
+    end
+    expect(page).to have_content 'was successfully updated.'
+    expect(page).not_to have_css '.new_membership'
+  end
+
 end
