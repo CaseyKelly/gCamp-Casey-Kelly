@@ -103,24 +103,4 @@ describe 'different users have different permissions' do
     expect(page).not_to have_css '.new_membership'
   end
 
-  it 'members who are not owners cannot edit, update or delete memberships' do
-    visit '/projects/new'
-    fill_in 'Name', with: 'edit and delete permissions'
-    click_button 'Create Project'
-    visit '/projects'
-    first(:link, 'edit and delete permissions').click
-    click_on 'Membership'
-    expect(page).to have_css '.new_membership'
-    within(:html, "p") do
-      select('Member', :from => 'membership[role]')
-      click_button 'Update'
-    end
-    expect(page).to have_content 'was successfully updated.'
-    within(:html, "p") do
-      select('Owner', :from => 'membership[role]')
-      click_button 'Update'
-    end
-    expect(page).to have_content 'You do not have access.'
-  end
-
 end
