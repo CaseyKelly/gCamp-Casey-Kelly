@@ -10,13 +10,15 @@
 
 <%= render 'shared/error', object: @membership, error_type: 'membership' %>
 
-<div class="well form-inline">
-  <%= form_for [@project, @membership], :url => { :action => :create } do |f| %>
-  <%= f.collection_select :user_id, User.all, :id, :full_name, {:prompt => 'Please select a user...'}, {class: "form-control"} %>
-  <%= f.collection_select :role, Membership.capital_roles, :last, :first, {include_blank: false}, {class: "form-control"} %>
-  <%= f.submit 'Add New Member', class: 'btn btn-info' %>
-  <% end %>
-</div>
+<% if current_user.project_owner?(@project) %>
+  <div class="well form-inline">
+    <%= form_for [@project, @membership], :url => { :action => :create } do |f| %>
+    <%= f.collection_select :user_id, User.all, :id, :full_name, {:prompt => 'Please select a user...'}, {class: "form-control"} %>
+    <%= f.collection_select :role, Membership.capital_roles, :last, :first, {include_blank: false}, {class: "form-control"} %>
+    <%= f.submit 'Add New Member', class: 'btn btn-info' %>
+    <% end %>
+  </div>
+<% end %>
 
 <% @project.memberships.each do |membership| %>
   <div class="form-inline">
