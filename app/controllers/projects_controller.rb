@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
 
     def check_owner
       redirect_to project_path(@project), alert: 'You do not have access.' unless current_user.project_owner?(@project)
-   end
+    end
 
     def project_params
       params.require(:project).permit(:name)
