@@ -129,4 +129,19 @@ describe 'different users have different permissions' do
     expect(page).to have_content 'You are the last owner.'
   end
 
+  it 'logged in users dont see edit on other users page' do
+    visit '/users'
+    click_on 'New User'
+    fill_in "First name", with: 'Casey'
+    fill_in "Last name", with: 'Kelly'
+    fill_in "Email", with: 'casey@kelly.com'
+    fill_in "Password", with: 'password'
+    fill_in "Password confirmation", with: 'password'
+    click_button "Login!"
+    expect(page).to have_content 'Thanks for signing up, dude!'
+    visit '/users'
+    click_on 'Test User'
+    expect(page).not_to have_content 'Edit'
+  end
+
 end
