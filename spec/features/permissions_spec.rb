@@ -144,4 +144,19 @@ describe 'different users have different permissions' do
     expect(page).not_to have_content 'Edit'
   end
 
+  it 'users only see own email addresses on users index' do
+    visit '/users'
+    click_on 'New User'
+    fill_in "First name", with: 'Casey'
+    fill_in "Last name", with: 'Kelly'
+    fill_in "Email", with: 'casey@kelly.com'
+    fill_in "Password", with: 'password'
+    fill_in "Password confirmation", with: 'password'
+    click_button "Login!"
+    expect(page).to have_content 'Thanks for signing up, dude!'
+    visit '/users'
+    expect(page).not_to have_content 'test@user.com'
+    expect(page).to have_content 'casey@kelly.com'
+  end
+
 end
