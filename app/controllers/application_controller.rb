@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  class Unauthorized < StandardError; end
+
+  rescue_from Unauthorized, with: :unauthorized
+
   def current_user
     User.find_by_id(session[:user_id])
   end
@@ -20,7 +24,14 @@ class ApplicationController < ActionController::Base
   end
   helper_method :navbar_projects
 
+  private
+
   def authenticate
     redirect_to login_path, :alert => 'You must be logged in to visit that page.' unless current_user
   end
+
+  def unauthorized
+    render "/users/404.html.erb", status: 404
+  end
+
 end

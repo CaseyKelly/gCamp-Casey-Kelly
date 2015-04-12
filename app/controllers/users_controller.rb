@@ -14,9 +14,12 @@ class UsersController < ApplicationController
   #   @submit_name = "Create User"
   # end
 
-  # def edit
-  #   @submit_name = "Update User"
-  # end
+  def edit
+    if current_user != @user
+      raise Unauthorized
+    end
+    @submit_name = "Update User"
+  end
 
   # def create
   #   @user = User.new(user_params)
