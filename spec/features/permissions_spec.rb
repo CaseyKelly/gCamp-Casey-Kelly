@@ -159,4 +159,19 @@ describe 'different users have different permissions' do
     expect(page).to have_content 'casey@kelly.com'
   end
 
+  it 'users dont see other users emails on user show page' do
+    visit '/users'
+    click_on 'New User'
+    fill_in "First name", with: 'Casey'
+    fill_in "Last name", with: 'Kelly'
+    fill_in "Email", with: 'casey@kelly.com'
+    fill_in "Password", with: 'password'
+    fill_in "Password confirmation", with: 'password'
+    click_button "Login!"
+    expect(page).to have_content 'Thanks for signing up, dude!'
+    visit '/users'
+    click_on 'Test User'
+    expect(page).not_to have_content 'test@user.com'
+  end
+
 end
