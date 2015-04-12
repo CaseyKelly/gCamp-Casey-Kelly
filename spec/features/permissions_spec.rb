@@ -119,4 +119,14 @@ describe 'different users have different permissions' do
     page.first('.glyphicon-remove').click
   end
 
+  it 'last owners of a project see last owner message' do
+    visit '/projects/new'
+    fill_in 'Name', with: 'last owner'
+    click_button 'Create Project'
+    visit '/projects'
+    first(:link, 'last owner').click
+    click_on 'Membership'
+    expect(page).to have_content 'You are the last owner.'
+  end
+
 end
