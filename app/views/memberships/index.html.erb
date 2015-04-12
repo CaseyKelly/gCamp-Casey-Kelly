@@ -28,9 +28,13 @@
         <%= f.hidden_field :user_id, value: membership.user.id %>
         <%= f.collection_select :role, Membership.capital_roles, :last, :first, {include_blank: false}, {class: "form-control"} %>
         <%= f.submit 'Update', class: 'btn btn-info' %>
-        <%= link_to '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'.html_safe, project_membership_path(@project, membership), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% if current_user.last_project_owner?(@project) && membership.user == current_user %>
+          You are the last owner.
+        <% else %>
+          <%= link_to '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'.html_safe, project_membership_path(@project, membership), method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
       <% end %>
+  <% end %>
     </div>
 <% else %>
   <table class="table">
@@ -41,7 +45,7 @@
       <tr>
         <td class="col-md-4"><%= membership.user.full_name %></td>
         <td class="col-md-2"><%= membership.role %></td>
-        <% if current_user.project_member?(@project) && membership.user == current_user %>
+        <% if membership.user == current_user %>
           <td><%= link_to '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'.html_safe, project_membership_path(@project, membership), method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% else %>
           <td></td>

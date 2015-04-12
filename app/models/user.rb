@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
     project.memberships.find_by(role: Membership.roles[:owner], user_id: id)
   end
 
+  def last_project_owner?(project)
+    project.memberships.where(role: Membership.roles[:owner]).count == 1
+  end
+
   def project_member?(project)
     project.memberships.find_by(role: Membership.roles[:member], user_id: id)
   end
