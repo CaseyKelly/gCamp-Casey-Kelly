@@ -12,6 +12,8 @@
     <dd><%= @user.first_name %></dd></p>
   <p><dt>Last name</dt>
     <dd><%= @user.last_name %></dd></p>
+  <% if current_user == @user  %>
   <p><dt>Email</dt>
     <dd><%= @user.email %></dd></p>
+  <% end %>
 </dl>
