@@ -103,4 +103,20 @@ describe 'different users have different permissions' do
     expect(page).not_to have_css '.new_membership'
   end
 
+  it 'members can only see their own x button to remove membership' do
+    visit '/projects/new'
+    fill_in 'Name', with: 'members remove themselves'
+    click_button 'Create Project'
+    visit '/projects'
+    first(:link, 'members remove themselves').click
+    click_on 'Membership'
+    expect(page).to have_css '.new_membership'
+    within(:html, "p") do
+      select('Member', :from => 'membership[role]')
+      click_button 'Update'
+    end
+    expect(page).to have_content 'was successfully updated.'
+    page.first('.glyphicon-remove').click
+  end
+
 end

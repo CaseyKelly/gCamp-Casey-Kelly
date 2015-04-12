@@ -1,6 +1,6 @@
 class MembershipsController < ApplicationController
   before_action :check_membership
-  before_action :check_owner, only: [:edit, :update, :destroy]
+  before_action :check_owner, only: [:edit, :update]
 
   def new
     @membership = Membership.new
@@ -35,7 +35,7 @@ class MembershipsController < ApplicationController
      @project = Project.find(params[:project_id])
      @membership = Membership.find(params[:id])
      @membership.destroy
-      redirect_to project_memberships_path(@project), notice: "#{@membership.user.full_name} was successfully deleted."
+      redirect_to projects_path, notice: "#{@membership.user.full_name} was successfully removed."
    end
 
    private
