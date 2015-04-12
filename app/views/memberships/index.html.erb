@@ -41,7 +41,11 @@
       <tr>
         <td class="col-md-4"><%= membership.user.full_name %></td>
         <td class="col-md-2"><%= membership.role %></td>
-        <td><%= link_to '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'.html_safe, project_membership_path(@project, membership), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.project_member?(@project) && membership.user == current_user %>
+          <td><%= link_to '<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'.html_safe, project_membership_path(@project, membership), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% else %>
+          <td></td>
+        <% end %>
       </tr>
       <% end %>
     </tbody>
