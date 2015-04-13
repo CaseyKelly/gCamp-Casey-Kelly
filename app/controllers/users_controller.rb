@@ -15,8 +15,10 @@ class UsersController < ApplicationController
   end
 
   def edit
-    if current_user != @user
-      raise Unauthorized
+    unless current_user.admin?
+      if current_user != @user
+        raise Unauthorized
+      end
     end
     @submit_name = "Update User"
   end
