@@ -57,7 +57,9 @@ class TasksController < ApplicationController
     end
 
     def check_membership
-      redirect_to projects_path, :alert => 'You do not have access to that project.' unless @project.users.include? current_user
+      unless current_user.admin?
+        redirect_to projects_path, :alert => 'You do not have access to that project.' unless @project.users.include? current_user
+      end
     end
 
     def task_params
