@@ -9,6 +9,7 @@ describe 'different users have different permissions' do
     fill_in "Password", with: 'password'
     click_on 'Login!'
     expect(page).to have_content 'Welcome back, stranger!'
+    visit new_project_path
   end
 
   it 'user login redirects to projects index' do
