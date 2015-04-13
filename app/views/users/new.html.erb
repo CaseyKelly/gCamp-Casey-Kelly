@@ -2,4 +2,82 @@
   <h1>New User</h1>
 </div>
 
-<%= render 'form' %>
+<%= form_for(@user, html: {:class => "form-horizontal"}, url: signup_path, method: :post) do |f| %>
+
+<%= render 'shared/error', object: @user, error_type: 'user' %>
+
+<div class="form-group">
+  <div class="field">
+    <%= f.label :first_name, :class => 'control-label col-md-2' %>
+
+    <div class='form-controls col-md-4'>
+      <%= f.text_field :first_name, :class => 'form-control' %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="field">
+    <%= f.label :last_name, :class => 'control-label col-md-2' %>
+
+    <div class='form-controls col-md-4'>
+      <%= f.text_field :last_name, :class => 'form-control' %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="field">
+    <%= f.label :email, :class => 'control-label col-md-2' %>
+
+    <div class='form-controls col-md-4'>
+      <%= f.email_field :email, :class => 'form-control' %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+   <div class="field">
+     <%= f.label :password, :class => 'control-label col-md-2' %>
+
+     <div class='form-controls col-md-4'>
+       <%= f.password_field :password, :class => 'form-control' %>
+     </div>
+   </div>
+ </div>
+
+ <div class="form-group">
+   <div class="field">
+     <%= f.label :password_confirmation, :class => 'control-label col-md-2' %>
+
+     <div class='form-controls col-md-4'>
+       <%= f.password_field :password_confirmation, :class => 'form-control' %>
+     </div>
+   </div>
+ </div>
+
+<% if current_user.admin == true  %>
+ <div class="form-group">
+   <div class="field">
+     <%= f.label :admin, :class => 'control-label col-md-2' %>
+
+     <div class='form-controls col-md-4'>
+       <%= f.check_box :admin %>
+     </div>
+   </div>
+ </div>
+ <% end %>
+
+<div class="form-group">
+  <div class="col-md-offset-2 col-md-4">
+    <%= f.submit @submit_name, :class => 'btn btn-primary'%>
+    <% unless @user.id == nil %>
+      <%= link_to 'Delete', user_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+    <% end %>
+    <%= link_to 'cancel', users_path, class: 'btn btn-default'%>
+  </div>
+</div>
+
+
+
+<% end %>

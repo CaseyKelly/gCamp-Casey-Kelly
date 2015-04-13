@@ -9,10 +9,10 @@ class UsersController < ApplicationController
   def show
   end
 
-  # def new
-  #   @user = User.new
-  #   @submit_name = "Create User"
-  # end
+  def new
+    @user = User.new
+    @submit_name = "Create User"
+  end
 
   def edit
     if current_user != @user
@@ -51,6 +51,6 @@ private
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :admin)
     end
 end
