@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'different users have different permissions' do
 
   before :each do
-    @user = User.create(first_name: 'Test', last_name: 'User', email:'test@user.com', password: 'password', password_confirmation: 'password')
+    @user = User.create(first_name: 'Test', last_name: 'User', email:'test@user.com', password: 'password', password_confirmation: 'password', admin: false)
     visit '/login'
     fill_in "Email", with: 'test@user.com'
     fill_in "Password", with: 'password'
@@ -140,7 +140,7 @@ describe 'different users have different permissions' do
     click_button "Create User"
     expect(page).to have_content 'Thanks for signing up, dude!'
     visit '/users'
-    click_on 'Test User'
+    first(:link, 'Casey Kelly').click
     expect(page).not_to have_content 'Edit'
   end
 
@@ -155,22 +155,22 @@ describe 'different users have different permissions' do
     click_button "Create User"
     expect(page).to have_content 'Thanks for signing up, dude!'
     visit '/users'
-    expect(page).not_to have_content 'test@user.com'
-    expect(page).to have_content 'casey@kelly.com'
+    expect(page).not_to have_content 'casey@kelly.com'
+    expect(page).to have_content 'test@user.com'
   end
 
   it 'users dont see other users emails on user show page' do
     visit '/users'
     click_on 'New User'
-    fill_in "First name", with: 'Casey'
-    fill_in "Last name", with: 'Kelly'
-    fill_in "Email", with: 'casey@kelly.com'
+    fill_in "First name", with: 'Bob'
+    fill_in "Last name", with: 'Saget'
+    fill_in "Email", with: 'bob@saget.com'
     fill_in "Password", with: 'password'
     fill_in "Password confirmation", with: 'password'
     click_button "Create User"
     expect(page).to have_content 'Thanks for signing up, dude!'
     visit '/users'
-    click_on 'Test User'
+    first(:link, 'Bob Saget').click
     expect(page).not_to have_content 'test@user.com'
   end
 
