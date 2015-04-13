@@ -15,7 +15,7 @@
 <p><%= link_to @project.num_tasks, project_tasks_path(@project) %>
 <p><%= link_to @project.num_memberships, project_memberships_path(@project) %>
 
-<% if current_user.project_owner?(@project) %>
+<% if current_user.project_owner?(@project) || current_user.admin? %>
   <div class="well">
     <h3>Delete</h3>
     <p>Deleting this project will also delete <%= @project.num_memberships.downcase %>, <%= @project.num_tasks.downcase %> and associated comments.</p>

@@ -10,7 +10,7 @@
 
 <%= render 'shared/error', object: @membership, error_type: 'membership' %>
 
-<% if current_user.project_owner?(@project) %>
+<% if current_user.project_owner?(@project) || current_user.admin? %>
   <div class="well form-inline">
     <%= form_for [@project, @membership], :url => { :action => :create } do |f| %>
     <%= f.collection_select :user_id, User.all, :id, :full_name, {:prompt => 'Please select a user...'}, {class: "form-control"} %>
@@ -20,7 +20,7 @@
   </div>
 <% end %>
 
-<% if current_user.project_owner?(@project) %>
+<% if current_user.project_owner?(@project) || current_user.admin? %>
   <% @project.memberships.each do |membership| %>
     <div class="form-inline">
       <%= form_for [@project, membership] do |f| %>
