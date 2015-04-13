@@ -31,7 +31,9 @@ class ApplicationController < ActionController::Base
   end
 
   def unauthorized
-    render "/users/404.html.erb", status: 404
+    unless current_user.admin?
+      render "/users/404.html.erb", status: 404
+    end
   end
 
 end

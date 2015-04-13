@@ -21,8 +21,14 @@
               <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown" role="button" aria-expanded="false" id="projects-dropdown">Projects<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li>
-                  <% current_user.projects.each do |project| %>
-                    <%= link_to project.name, project_path(project) %>
+                  <% if current_user.admin? %>
+                    <% Project.all.each do |project| %>
+                      <%= link_to project.name, project_path(project) %>
+                    <% end %>
+                  <% else %>
+                    <% current_user.projects.each do |project| %>
+                      <%= link_to project.name, project_path(project) %>
+                    <% end %>
                   <% end %>
                 </li>
                 <li class="divider"></li>
