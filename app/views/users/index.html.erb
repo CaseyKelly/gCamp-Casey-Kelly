@@ -21,7 +21,7 @@
     <% @users.each do |user| %>
     <tr>
       <td><%= link_to user.full_name, user_path(user) %></td>
-      <% if current_user == user %>
+      <% if current_user == user || current_user.admin? %>
       <td><%= mail_to user.email %></td>
       <td>
         <div class="text-right">
