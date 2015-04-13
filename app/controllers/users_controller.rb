@@ -23,15 +23,15 @@ class UsersController < ApplicationController
     @submit_name = "Update User"
   end
 
-  # def create
-  #   @user = User.new(user_params)
-  #
-  #   if @user.save
-  #     redirect_to users_path, notice: 'User was successfully created.'
-  #   else
-  #     render :new
-  #   end
-  # end
+  def create
+    @user = User.new(user_params)
+
+    if @user.save
+      redirect_to new_project_path, notice: "Thanks for signing up, dude!"
+    else
+      render :new
+    end
+  end
 
   def update
       if @user.update(user_params)
