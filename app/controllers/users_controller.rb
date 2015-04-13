@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate, except: [:create]
+  before_action :set_collaborators, only: [:index, :show]
 
   def index
     @users = User.all
@@ -50,6 +51,10 @@ private
 
     def set_user
       @user = User.find(params[:id])
+    end
+    
+    def set_collaborators
+      @collaborators = current_user.projects.flat_map{|project| project.users}
     end
 
     def user_params
