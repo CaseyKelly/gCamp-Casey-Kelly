@@ -137,7 +137,7 @@ describe 'different users have different permissions' do
     fill_in "Email", with: 'casey@kelly.com'
     fill_in "Password", with: 'password'
     fill_in "Password confirmation", with: 'password'
-    click_button "Login!"
+    click_button "Create User"
     expect(page).to have_content 'Thanks for signing up, dude!'
     visit '/users'
     click_on 'Test User'
@@ -152,7 +152,7 @@ describe 'different users have different permissions' do
     fill_in "Email", with: 'casey@kelly.com'
     fill_in "Password", with: 'password'
     fill_in "Password confirmation", with: 'password'
-    click_button "Login!"
+    click_button "Create User"
     expect(page).to have_content 'Thanks for signing up, dude!'
     visit '/users'
     expect(page).not_to have_content 'test@user.com'
@@ -167,7 +167,7 @@ describe 'different users have different permissions' do
     fill_in "Email", with: 'casey@kelly.com'
     fill_in "Password", with: 'password'
     fill_in "Password confirmation", with: 'password'
-    click_button "Login!"
+    click_button "Create User"
     expect(page).to have_content 'Thanks for signing up, dude!'
     visit '/users'
     click_on 'Test User'

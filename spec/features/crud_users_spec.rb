@@ -20,7 +20,7 @@ describe 'Users can CRUD users' do
     fill_in "Email", with: 'casey@kelly.com'
     fill_in "Password", with: 'password'
     fill_in "Password confirmation", with: 'password'
-    click_button "Login!"
+    click_button "Create User"
     expect(page).to have_content 'Thanks for signing up, dude!'
   end
 
@@ -36,7 +36,7 @@ describe 'Users can CRUD users' do
     fill_in "Email", with: 'casey@kelly.com'
     fill_in "Password", with: 'password'
     fill_in "Password confirmation", with: 'password'
-    click_button "Login!"
+    click_button "Create User"
     expect(page).to have_content "First name can't be blank"
   end
 
@@ -46,7 +46,7 @@ describe 'Users can CRUD users' do
     fill_in "Email", with: 'casey@kelly.com'
     fill_in "Password", with: 'password'
     fill_in "Password confirmation", with: 'password'
-    click_button "Login!"
+    click_button "Create User"
     expect(page).to have_content "Last name can't be blank"
   end
 
@@ -55,7 +55,7 @@ describe 'Users can CRUD users' do
     fill_in "First name", with: 'Casey'
     fill_in "Last name", with: 'Kelly'
     fill_in "Email", with: 'casey@kelly.com'
-    click_button "Login!"
+    click_button "Create User"
     expect(page).to have_content "Password can't be blank"
   end
 
@@ -66,7 +66,7 @@ describe 'Users can CRUD users' do
     fill_in "Email", with: 'casey@kelly.com'
     fill_in "Password", with: 'password'
     fill_in "Password confirmation", with: 'pasword'
-    click_button "Login!"
+    click_button "Create User"
     expect(page).to have_content "Password confirmation doesn't match Password"
   end
 
@@ -76,7 +76,7 @@ describe 'Users can CRUD users' do
     fill_in "Last name", with: 'Kelly'
     fill_in "Password", with: 'password'
     fill_in "Password confirmation", with: 'password'
-    click_button "Login!"
+    click_button "Create User"
     expect(page).to have_content "Email can't be blank"
   end
 
@@ -87,7 +87,7 @@ describe 'Users can CRUD users' do
     fill_in "Email", with: 'casey@kelly.com'
     fill_in "Password", with: 'password'
     fill_in "Password confirmation", with: 'password'
-    click_button "Login!"
+    click_button "Create User"
     expect(page).to have_content 'Thanks for signing up, dude!'
     visit '/users'
     click_on 'New User'
@@ -96,7 +96,7 @@ describe 'Users can CRUD users' do
     fill_in "Email", with: 'casey@kelly.com'
     fill_in "Password", with: 'password'
     fill_in "Password confirmation", with: 'password'
-    click_button "Login!"
+    click_button "Create User"
     expect(page).to have_content 'Email has already been taken'
   end
 
