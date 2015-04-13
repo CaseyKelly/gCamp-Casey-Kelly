@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
     if request.referer.present?
       session[:my_previous_url] = URI(request.referer).path
     else
-      session[:my_previous_url] = root_url
+      session[:my_previous_url] = new_project_path
     end
   end
 
