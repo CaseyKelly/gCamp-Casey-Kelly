@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   end
 
   def last_project_owner?(project)
-    project.memberships.where(role: Membership.roles[:owner]).count == 1
+    project.memberships.where(role: Membership.roles[:owner]).count == 1 && project_owner?(project)
   end
 
   def project_member?(project)
