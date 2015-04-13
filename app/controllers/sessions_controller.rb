@@ -24,7 +24,11 @@ class SessionsController < ApplicationController
   private
 
   def save_my_previous_url
-    session[:my_previous_url] = URI(request.referer).path
+    if request.referer.present?
+      session[:my_previous_url] = URI(request.referer).path
+    else
+      session[:my_previous_url] = root_url
+    end
   end
 
 end
