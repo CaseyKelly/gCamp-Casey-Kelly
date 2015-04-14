@@ -5,7 +5,7 @@
 <h3>README</h3>
 
 * Ruby version
-  2.2.0
+  2.2.2
 
 * To install:
 ```
