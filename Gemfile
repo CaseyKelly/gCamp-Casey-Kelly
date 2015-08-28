@@ -17,7 +17,7 @@ group :production do
 end
 
 group :development, :test do
-  gem 'nyan-cat-formatter'
+  # gem 'nyan-cat-formatter'
   gem 'database_cleaner', '~> 1.4.0'
   gem 'factory_girl_rails'
   gem 'better_errors'
